@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace TechJobsConsole
 {
@@ -76,10 +76,10 @@ namespace TechJobsConsole
                 while (reader.Peek() >= 0)
                 {
                     string line = reader.ReadLine();
-                    string[] rowArrray = CSVRowToStringArray(line);
-                    if (rowArrray.Length > 0)
+                    string[] rowArray = CSVRowToStringArray(line);
+                    if (rowArray.Length > 0)
                     {
-                        rows.Add(rowArrray);
+                        rows.Add(rowArray);
                     }
                 }
             }
@@ -137,6 +137,27 @@ namespace TechJobsConsole
             valueBuilder.Clear();
 
             return rowValues.ToArray();
+        }
+
+        public static List<Dictionary<string, string>> FindByValue(string searchTerm)
+        {
+            LoadData();
+
+            List<Dictionary<string, string>> results = new List<Dictionary<string, string>>();
+            Regex expression = new Regex(Regex.Escape(searchTerm), RegexOptions.IgnoreCase);
+
+            foreach(Dictionary<string, string> job in AllJobs)
+            {
+                foreach(KeyValuePair<string, string> column in job)
+                {
+                    if (expression.IsMatch(column.Value))
+                    {
+                        results.Add(job);
+                        break;
+                    }
+                }
+            }
+            return results;
         }
     }
 }
