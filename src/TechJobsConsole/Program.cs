@@ -64,12 +64,13 @@ namespace TechJobsConsole
                     if (columnChoice.Equals("all"))
                     {
                         searchResults = JobData.FindByValue(searchTerm);
+                        PrintJobs(searchResults);
                     }
                     else
                     {
                         searchResults = JobData.FindByColumnAndValue(columnChoice, searchTerm);
+                        PrintJobs(searchResults, columnChoice);
                     }
-                    PrintJobs(searchResults);
                 }
             }
         }
@@ -125,6 +126,9 @@ namespace TechJobsConsole
             return choiceKeys[choiceIdx];
         }
 
+        /*
+         * Prints provided list of jobs
+         */
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
             if (someJobs.Count == 0)
@@ -143,6 +147,16 @@ namespace TechJobsConsole
                 }
                 Console.WriteLine($"*****\n{someJobs.Count} matches found.");
             }
+        }
+
+
+        /*
+         * Sorts alphabetically within provided column before printing list of jobs
+         */
+        private static void PrintJobs(List<Dictionary<string, string>> someJobs, string sortColumn)
+        {
+            //sort, nyi
+            PrintJobs(someJobs);
         }
     }
 }

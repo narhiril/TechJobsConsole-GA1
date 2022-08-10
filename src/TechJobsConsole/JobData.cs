@@ -13,7 +13,7 @@ namespace TechJobsConsole
         public static List<Dictionary<string, string>> FindAll()
         {
             LoadData();
-            return AllJobs;
+            return AllJobs.ConvertAll(job => new Dictionary<string, string>()); //deep copy for bonus mission 2
         }
 
         /*
@@ -153,7 +153,7 @@ namespace TechJobsConsole
                     if (expression.IsMatch(column.Value))
                     {
                         results.Add(job);
-                        break;
+                        break; //prevents duplicate results
                     }
                 }
             }
