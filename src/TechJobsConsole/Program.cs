@@ -55,7 +55,7 @@ namespace TechJobsConsole
                     string columnChoice = GetUserSelection("Search", columnChoices);
 
                     // What is their search term?
-                    Console.WriteLine("\nSearch term: ");
+                    Console.Write("\nSearch term: ");
                     string searchTerm = Console.ReadLine();
 
                     List<Dictionary<string, string>> searchResults;
@@ -79,7 +79,7 @@ namespace TechJobsConsole
          */
         private static string GetUserSelection(string choiceHeader, Dictionary<string, string> choices)
         {
-            int choiceIdx;
+            int choiceIdx = -1; //initialize to an invalid value
             bool isValidChoice = false;
             string[] choiceKeys = new string[choices.Count];
 
@@ -99,12 +99,21 @@ namespace TechJobsConsole
                     Console.WriteLine(j + " - " + choices[choiceKeys[j]]);
                 }
 
+                Console.Write("Enter your choice: ");
                 string input = Console.ReadLine();
-                choiceIdx = int.Parse(input);
+                try
+                {
+                    choiceIdx = int.Parse(input);
+                }
+                catch (FormatException) //prevents a crash on non-numeric input
+                {
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    continue; //no point checking further
+                }
 
                 if (choiceIdx < 0 || choiceIdx >= choiceKeys.Length)
                 {
-                    Console.WriteLine("Invalid choices. Try again.");
+                    Console.WriteLine("Invalid choice. Please try again.");
                 }
                 else
                 {
