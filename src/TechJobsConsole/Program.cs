@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TechJobsConsole
 {
@@ -155,7 +156,8 @@ namespace TechJobsConsole
          */
         private static void PrintJobs(List<Dictionary<string, string>> someJobs, string sortColumn)
         {
-            //sort, nyi
+            //var sortedJobs = someJobs.ConvertAll(job => new Dictionary<string, string>()); //deep copy, not sorted yet
+            //sortedJobs.OrderBy(job => job[sortColumn]);
             PrintJobs(someJobs);
         }
     }
