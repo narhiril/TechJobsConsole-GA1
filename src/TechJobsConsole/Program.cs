@@ -128,7 +128,7 @@ namespace TechJobsConsole
         }
 
         /// <summary>
-        /// Prints provided list of jobs
+        /// Prints provided list of jobs without sorting.
         /// </summary>
         /// <param name="someJobs"></param>
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
