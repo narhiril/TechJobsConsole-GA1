@@ -156,9 +156,8 @@ namespace TechJobsConsole
          */
         private static void PrintJobs(List<Dictionary<string, string>> someJobs, string sortColumn)
         {
-            //var sortedJobs = someJobs.ConvertAll(job => new Dictionary<string, string>()); //deep copy, not sorted yet
-            //sortedJobs.OrderBy(job => job[sortColumn]);
-            PrintJobs(someJobs);
+            var sortedJobs = someJobs.OrderBy(job => job[sortColumn]).ToList();
+            PrintJobs(sortedJobs);
         }
     }
 }

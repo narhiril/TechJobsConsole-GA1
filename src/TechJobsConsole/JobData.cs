@@ -14,7 +14,7 @@ namespace TechJobsConsole
         public static List<Dictionary<string, string>> FindAll()
         {
             LoadData();
-            return AllJobs.ConvertAll(job => new Dictionary<string, string>()); //deep copy for bonus mission 2
+            return AllJobs.ConvertAll(job => new Dictionary<string, string>(job)); // deep copy for bonus mission 2
         }
 
         /*
