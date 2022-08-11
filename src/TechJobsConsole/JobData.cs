@@ -139,6 +139,11 @@ namespace TechJobsConsole
             return rowValues.ToArray();
         }
 
+        /// <summary>
+        /// Regex-based search through AllJobs for an input string
+        /// </summary>
+        /// <param name="searchTerm"></param>
+        /// <returns>A list of jobs where a match was found</returns>
         public static List<Dictionary<string, string>> FindByValue(string searchTerm)
         {
             LoadData();

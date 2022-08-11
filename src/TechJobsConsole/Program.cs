@@ -127,9 +127,10 @@ namespace TechJobsConsole
             return choiceKeys[choiceIdx];
         }
 
-        /*
-         * Prints provided list of jobs
-         */
+        /// <summary>
+        /// Prints provided list of jobs
+        /// </summary>
+        /// <param name="someJobs"></param>
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
             if (someJobs.Count == 0)
@@ -150,10 +151,11 @@ namespace TechJobsConsole
             }
         }
 
-
-        /*
-         * Sorts alphabetically within provided column before printing list of jobs
-         */
+        /// <summary>
+        /// Sorts alphabetically within provided column before printing list of jobs
+        /// </summary>
+        /// <param name="someJobs"></param>
+        /// <param name="sortColumn"></param>
         private static void PrintJobs(List<Dictionary<string, string>> someJobs, string sortColumn)
         {
             var sortedJobs = someJobs.OrderBy(job => job[sortColumn]).ToList();
