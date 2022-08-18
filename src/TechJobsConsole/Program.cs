@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace TechJobsConsole
 {
@@ -139,15 +140,16 @@ namespace TechJobsConsole
             }
             else
             {
+                StringBuilder output = new StringBuilder();
                 foreach(Dictionary<string, string> job in someJobs)
                 {
-                    Console.WriteLine("*****");
+                    output.AppendLine("*****");
                     foreach (KeyValuePair<string, string> infoField in job)
                     {
-                        Console.WriteLine($"{infoField.Key}: {infoField.Value}");
+                        output.AppendLine($"{infoField.Key}: {infoField.Value}");
                     }
                 }
-                Console.WriteLine($"*****\n{someJobs.Count} matches found.");
+                Console.WriteLine(output.ToString() + $"*****\n{someJobs.Count} matches found.");
             }
         }
 
